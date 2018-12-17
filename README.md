@@ -1,13 +1,13 @@
 # TOC Project 2019
 
 ## 使用教學
-每次使用須執行:
+### 每次使用須執行:
 1. $./ngrook http 5000
 2. $python3 app.py
 3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
 4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
 
-clone下來後的僅須一次:
+### clone下來後的僅須一次:
 1. 環境安裝
 ```sh
 pip3 install -r requirements.txt
@@ -25,7 +25,7 @@ ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 * Facebook Page and App (創一個粉專並且盡到FB developer做一些設定)
 * HTTPS Server (看下面的ngrok)
 
-#### ngrok介紹
+### ngrok介紹
 ngrok是一個可以將local端的server連到外面的辦法  
 透過以下這段程式碼，可以得到https的網址，這個網址給別人，別人就可以跟local端互動
 ```sh
@@ -36,7 +36,7 @@ ngrok是一個可以將local端的server連到外面的辦法
 5000為port，須跟程式碼裡設定一樣  
 run(host="localhost", port=5000, debug=True, reloader=True)
 
-#### 主程式碼介紹
+### 主程式碼介紹
 app.py做以下幾件事  
 (1)一開始的webhook設定  
 (2)接收request  
