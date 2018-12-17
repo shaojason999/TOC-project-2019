@@ -50,7 +50,7 @@ python3 app.py
 ![fsm](./img/show-fsm.png)
 
 ## Note
-1. pp.py中一開始的webhook設定的token可以隨便打，跟FB developer設定一樣就好  
+1. app.py中一開始的webhook設定的token可以隨便打，跟FB developer設定一樣就好  
 2. 可是utils.py中要send回去給messenger時，就需要用粉專的token(從FB developer的權杖產生取得)  
 3. 資料夾中的demo只是練習(不完整)，無法跟messenger聯絡  
 4. FB developer要注意的地方  
@@ -59,4 +59,5 @@ python3 app.py
 (3)產品的Webhook記得是要選page，不是user。subscribe時的token設定看Note的(1)  
 
   
+## 作業介紹&FAQ
 More details in the [Slides](https://hackmd.io/p/SkpBR-Yam#/) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
