@@ -14,16 +14,35 @@ class TocMachine(GraphMachine):
     def is_going_to_state2(self, text):
         return text.lower() == 'go to state2'
 
+    def is_going_to_state123(self, text):
+        print("123")
+        return text.lower() == 'go to state123'
+    def is_going_to_state222(self):
+        print("234")
+        return 1
+
     def on_enter_state1(self, event):
         print("I'm entering state1")
         print('CURRENT STATE: ' + machine.state)
-        self.go_back()
+        self.go_back() # go to on_exit_state1
+
+
+    def on_enter_state123(self, event):
+        print("I'm entering state123")
+        print('CURRENT STATE: ' + machine.state)
+        self.advance123() # go to on_exit_state1
+    def on_exit_state123(self):
+        print('Leaving state123')
 
     def on_exit_state1(self):
         print('Leaving state1')
 
     def on_enter_state2(self, event):
         print("I'm entering state2")
+        print('CURRENT STATE: ' + machine.state)
+        self.go_back()
+    def on_enter_state2(self):
+        print("I'm entering state222")
         print('CURRENT STATE: ' + machine.state)
         self.go_back()
 
@@ -35,7 +54,8 @@ machine = TocMachine(
     states=[
         'user',
         'state1',
-        'state2'
+        'state2',
+	'state123'
     ],
     transitions=[
         {
@@ -51,10 +71,23 @@ machine = TocMachine(
             'conditions': 'is_going_to_state2'
         },
         {
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'state123',
+            'conditions': 'is_going_to_state123'
+        },
+        {
+            'trigger': 'advance123',
+            'source': 'state123',
+            'dest': 'state2',
+            'conditions': 'is_going_to_state222'
+        },
+        {
             'trigger': 'go_back',
             'source': [
                 'state1',
-                'state2'
+                'state2',
+		'state123'
             ],
             'dest': 'user'
         }

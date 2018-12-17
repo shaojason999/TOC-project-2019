@@ -3,7 +3,7 @@ from bottle import route, run, request, abort, static_file
 from fsm import TocMachine
 
 
-VERIFY_TOKEN = "Your Webhook Verify Token"
+VERIFY_TOKEN = "123"
 machine = TocMachine(
     states=[
         'user',
