@@ -1,7 +1,6 @@
 import requests
 import os
 
-
 GRAPH_URL = "https://graph.facebook.com/v2.6"
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 
