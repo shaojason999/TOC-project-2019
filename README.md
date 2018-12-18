@@ -50,6 +50,7 @@ python3 app.py
 ### 額外所需文件:(放在同目錄下)
 1. Procfile: 告訴heroku要怎麼執行我的程式
 2. Aptfile: 告訴heroku需要安裝些甚麼
+3. requirements.txt: 安裝指示
 ### 事前準備:
 1. 先去Heroku辦帳號及創建App
 2. install heroku
