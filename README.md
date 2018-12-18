@@ -62,7 +62,10 @@ python3 app.py
 8. git push上去
   
 * 程式碼也需要改成(port不能寫死)  
+  import os  
+  PORT=os.environ['PORT']  
   run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
+  * 如果是本機段要用的話記得加上 $export PORT=5000
 
 * $ heroku config:set ACCESS_TOKEN=你的粉專 access token  
 ### 每次使用須執行:
