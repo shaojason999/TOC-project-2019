@@ -45,6 +45,7 @@ python3 app.py
 2. $python3 app.py
 3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
 4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
+* 1.跟2.不能關
 
 ## PaaS Server使用教學(使用Heroku)
 ### 額外所需文件:(放在同目錄下)
