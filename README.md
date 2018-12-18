@@ -1,13 +1,7 @@
 # TOC Project 2019
 
-## 使用教學
-### 每次使用須執行:
-1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
-2. $python3 app.py
-3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
-4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
-
-### clone下來後的僅須一次:
+## 環境設定與介紹
+#### clone下來後的僅須一次:
 1. 環境安裝
 ```sh
 pip3 install -r requirements.txt
@@ -19,13 +13,12 @@ export ACCESS_TOKEN=xxx
 然後在需要的程式碼裡面打上這段來取得  
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 
-
-### 環境需求
+#### 環境需求
 * Python 3 (透過$python3 -V 看版本)
 * Facebook Page and App (創一個粉專並且盡到FB developer做一些設定)
 * HTTPS Server (看下面的ngrok)
 
-### ngrok介紹
+#### ngrok介紹
 ngrok是一個可以將local端的server連到外面的辦法  
 透過以下這段程式碼，可以得到https的網址，這個網址給別人，別人就可以跟local端互動
 ```sh
@@ -36,7 +29,7 @@ ngrok是一個可以將local端的server連到外面的辦法
 5000為port，須跟程式碼裡設定一樣  
 run(host="localhost", port=5000, debug=True, reloader=True)
 
-### 主程式碼介紹
+#### 主程式碼介紹
 app.py做以下幾件事  
 (1)一開始的webhook設定  
 (2)接收request  
@@ -45,6 +38,36 @@ app.py做以下幾件事
 ```sh
 python3 app.py
 ```
+
+## Local端執行教學(配合ngrook)
+### 每次使用須執行:
+1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
+2. $python3 app.py
+3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
+4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
+
+## PaaS Server使用教學(使用Heroku)
+### 額外所需文件:(放在同目錄下)
+1. Procfile: 告訴heroku要怎麼執行我的程式
+2. Aptfile: 告訴heroku需要安裝些甚麼
+### 事前準備:
+1. 先去Heroku辦帳號及創建App
+2. install heroku
+3. $heroku buildpacks:set heroku/python
+4. $heroku buildpacks:add --index 1 heroku-community/apt
+5. $heroku login
+6. $git init
+7. $heroku git:remote -a toc-project-2019
+8. git push上去
+  
+* 程式碼也需要改成(port不能寫死)  
+  run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
+
+* $ heroku config:set ACCESS_TOKEN=你的粉專 access token  
+### 每次使用須執行:
+1. git push最新的上去到heroku(注意不是github喔，除非有connect)
+不一定需要(2. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從去heroku取得，token打123(app.py裡的設定))
+3. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
 
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
