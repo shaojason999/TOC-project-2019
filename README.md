@@ -1,6 +1,4 @@
 # TOC Project 2019
-[使用 ngrook](#local端執行教學(使用ngrook))  
-[使用 Heroku](#PaaS Server使用教學(使用Heroku))  
 
 ## 環境設定與介紹
 #### clone下來後的僅須一次:
