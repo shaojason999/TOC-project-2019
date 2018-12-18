@@ -2,7 +2,7 @@
 
 ## 使用教學
 ### 每次使用須執行:
-1. $./ngrook http 5000
+1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
 2. $python3 app.py
 3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
 4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
