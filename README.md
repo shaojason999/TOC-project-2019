@@ -1,6 +1,4 @@
 # TOC Project 2019
-[a](#Local端執行教學(使用ngrook))
-[b](#local端執行教學(使用ngrook))
 
 環境設定與介紹
 -------------------------------
@@ -79,7 +77,9 @@ PaaS Server使用教學(使用Heroku)
 2. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)  
 * 不一定需要(重新設定才要): 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從去heroku取得，token打123(app.py裡的設定))
 * https://toc-project-2019.herokuapp.com/
-## Finite State Machine
+
+Finite State Machine
+-------------------------------
 ![fsm](./img/show-fsm.png)
 
 Note
