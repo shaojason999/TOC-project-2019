@@ -1,5 +1,4 @@
 from bottle import route, run, request, abort, static_file
-
 from fsm import TocMachine
 
 
