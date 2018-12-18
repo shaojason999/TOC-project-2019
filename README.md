@@ -77,13 +77,14 @@ python3 app.py
 ![fsm](./img/show-fsm.png)
 
 ## Note
+1. !!!如果感覺都對了，但是傳messenger訊息卻沒有反應->去developer重新設定(webhook設定還有訂閱都重來)!!!
+2. !!!產品的Webhook記得是要選page，不是user(重新訂閱時要選好)!!!
 1. app.py中一開始的webhook設定的token可以隨便打，跟FB developer設定一樣就好  
 2. 可是utils.py中要send回去給messenger時，就需要用粉專的token(從FB developer的權杖產生取得)  
 3. 資料夾中的demo只是練習(不完整)，無法跟messenger聯絡  
 4. FB developer要注意的地方  
 (1)左邊的產品的勾勾都要是綠色  
-(2)產品Messenger的設定的webhook要記得訂閱粉專(有時會有問題可以重新訂閱)  
-(3)產品的Webhook記得是要選page，不是user。subscribe時的token設定看Note的(1)  
+(2)產品Messenger的設定的webhook要記得訂閱粉專(有有問題時可以重新訂閱試試看)  
 
   
 ## 作業介紹&FAQ
