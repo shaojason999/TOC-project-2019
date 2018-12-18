@@ -39,7 +39,7 @@ app.py做以下幾件事
 python3 app.py
 ```
 
-## Local端執行教學(配合ngrook)
+## Local端執行教學(使用ngrook)
 ### 每次使用須執行:
 1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
 2. $python3 app.py
@@ -50,6 +50,7 @@ python3 app.py
 ### 額外所需文件:(放在同目錄下)
 1. Procfile: 告訴heroku要怎麼執行我的程式
 2. Aptfile: 告訴heroku需要安裝些甚麼
+3. requirements.txt: 安裝指示
 ### 事前準備:
 1. 先去Heroku辦帳號及創建App
 2. install heroku
@@ -61,25 +62,29 @@ python3 app.py
 8. git push上去
   
 * 程式碼也需要改成(port不能寫死)  
+  import os  
+  PORT=os.environ['PORT']  
   run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
+  * 如果是本機段要用的話記得加上 $export PORT=5000
 
 * $ heroku config:set ACCESS_TOKEN=你的粉專 access token  
 ### 每次使用須執行:
 1. git push最新的上去到heroku(注意不是github喔，除非有connect)
 2. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)  
 * 不一定需要(重新設定才要): 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從去heroku取得，token打123(app.py裡的設定))
-
+* https://toc-project-2019.herokuapp.com/
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
 
 ## Note
+1. !!!如果感覺都對了，但是傳messenger訊息卻沒有反應->去developer重新設定(webhook設定還有訂閱都重來)!!!
+2. !!!產品的Webhook記得是要選page，不是user(重新訂閱時要選好)!!!
 1. app.py中一開始的webhook設定的token可以隨便打，跟FB developer設定一樣就好  
 2. 可是utils.py中要send回去給messenger時，就需要用粉專的token(從FB developer的權杖產生取得)  
 3. 資料夾中的demo只是練習(不完整)，無法跟messenger聯絡  
 4. FB developer要注意的地方  
 (1)左邊的產品的勾勾都要是綠色  
-(2)產品Messenger的設定的webhook要記得訂閱粉專(有時會有問題可以重新訂閱)  
-(3)產品的Webhook記得是要選page，不是user。subscribe時的token設定看Note的(1)  
+(2)產品Messenger的設定的webhook要記得訂閱粉專(有有問題時可以重新訂閱試試看)  
 
   
 ## 作業介紹&FAQ
