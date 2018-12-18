@@ -1,5 +1,5 @@
 # TOC Project 2019
-[使用 ngrook](#Local端執行教學(使用ngrook))  
+[使用 ngrook](#local端執行教學(使用ngrook))  
 [使用 Heroku](#PaaS Server使用教學(使用Heroku))  
 
 ## 環境設定與介紹
@@ -41,7 +41,7 @@ app.py做以下幾件事
 python3 app.py
 ```
 
-# Local端執行教學(使用ngrook)
+## Local端執行教學(使用ngrook)
 ### 每次使用須執行:
 1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
 2. $python3 app.py
