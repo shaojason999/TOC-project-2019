@@ -1,12 +1,14 @@
 # TOC Project 2019
 
-## 環境設定與介紹
+環境設定與介紹
+-------------------------------
 #### clone下來後的僅須一次:
 1. 環境安裝
 ```sh
 pip3 install -r requirements.txt
 ```
-2. 取得粉專token(xxx)(從developer取得)，存在本機端(若重新產生token，則需要再打一次)
+2. 取得粉專token(xxx)(從developer取得)，存在本機端(若重新產生token，則需要再打一次)  
+  而且export儲存的位置僅限開啟的那個terminal(關掉就沒了)
 ```sh
 export ACCESS_TOKEN=xxx
 ```
@@ -39,14 +41,17 @@ app.py做以下幾件事
 python3 app.py
 ```
 
-## Local端執行教學(使用ngrook)
+Local端執行教學(使用ngrook)
+-------------------------------
 ### 每次使用須執行:
 1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
 2. $python3 app.py
 3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
 4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
+* 1.跟2.不能關
 
-## PaaS Server使用教學(使用Heroku)
+PaaS Server使用教學(使用Heroku)
+-------------------------------
 ### 額外所需文件:(放在同目錄下)
 1. Procfile: 告訴heroku要怎麼執行我的程式
 2. Aptfile: 告訴heroku需要安裝些甚麼
@@ -73,10 +78,13 @@ python3 app.py
 2. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)  
 * 不一定需要(重新設定才要): 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從去heroku取得，token打123(app.py裡的設定))
 * https://toc-project-2019.herokuapp.com/
-## Finite State Machine
+
+Finite State Machine
+-------------------------------
 ![fsm](./img/show-fsm.png)
 
-## Note
+Note
+-------------------------------
 1. !!!如果感覺都對了，但是傳messenger訊息卻沒有反應->去developer重新設定(webhook設定還有訂閱都重來)!!!
 2. !!!產品的Webhook記得是要選page，不是user(重新訂閱時要選好)!!!
 1. app.py中一開始的webhook設定的token可以隨便打，跟FB developer設定一樣就好  
@@ -87,5 +95,6 @@ python3 app.py
 (2)產品Messenger的設定的webhook要記得訂閱粉專(有有問題時可以重新訂閱試試看)  
 
   
-## 作業介紹&FAQ
+作業介紹&FAQ
+-------------------------------
 More details in the [Slides](https://hackmd.io/p/SkpBR-Yam#/) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
