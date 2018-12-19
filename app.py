@@ -17,7 +17,8 @@ machine = TocMachine(
 	'max',
 	'eat',
 	'drink',
-	'repeat'
+	'repeat',
+	'sticker'
     ],
     transitions=[
         {
@@ -45,6 +46,12 @@ machine = TocMachine(
             'conditions': 'go_to_repeat'
         },
         {
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'sticker',
+            'conditions': 'go_to_sticker'
+        },
+        {
             'trigger': 'rep',
             'source': 'repeat',
             'dest': 'repeat',
@@ -68,7 +75,8 @@ machine = TocMachine(
 		'max',
 		'eat',
 		'drink',
-		'repeat'
+		'repeat',
+		'sticker'
             ],
             'dest': 'choose'
         }

@@ -35,6 +35,12 @@ class TocMachine(GraphMachine):
             return text.lower() == 'repeat'
         return False
 
+    def go_to_sticker(self, event):
+        if event.get("message") and event['message'].get("sticker_id"):
+            text = event['message']['sticker_id']
+            return text == 369239263222822
+        return False
+
     def always_true(self, event):
         return True
 
@@ -81,6 +87,13 @@ class TocMachine(GraphMachine):
 
     def on_exit_max(self):
         print('go back to choose')
+
+    def on_enter_sticker(self, event):
+        print("I'm entering sticker")
+
+        sender_id = event['sender']['id']
+        responese = send_text_message(sender_id, "thanks for you like")
+        self.go_back()
 
     def go_to_min(self, event):
         if event.get("message") and event['message'].get("text"):
