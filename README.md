@@ -7,7 +7,8 @@
 ```sh
 pip3 install -r requirements.txt
 ```
-2. 取得粉專token(xxx)(從developer取得)，存在本機端(若重新產生token，則需要再打一次)
+2. 取得粉專token(xxx)(從developer取得)，存在本機端(若重新產生token，則需要再打一次)  
+  而且export儲存的位置僅限開啟的那個terminal(關掉就沒了)
 ```sh
 export ACCESS_TOKEN=xxx
 ```
