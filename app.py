@@ -1,40 +1,79 @@
 from bottle import route, run, request, abort, static_file
 from fsm import TocMachine
 import os
-
+import global_var
 
 PORT=os.environ['PORT']
+
+minimum=0
+maximum=100
 
 VERIFY_TOKEN = "123"
 machine = TocMachine(
     states=[
-        'user',
-        'state1',
-        'state2'
+	'choose',
+	'random',
+	'min',
+	'max',
+	'eat',
+	'drink',
+	'repeat'
     ],
     transitions=[
         {
-            'trigger': 'advance',
-            'source': 'user',
-            'dest': 'state1',
-            'conditions': 'is_going_to_state1'
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'random',
+            'conditions': 'go_to_random'
         },
         {
-            'trigger': 'advance',
-            'source': 'user',
-            'dest': 'state2',
-            'conditions': 'is_going_to_state2'
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'eat',
+            'conditions': 'go_to_eat'
         },
         {
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'drink',
+            'conditions': 'go_to_drink'
+        },
+        {
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'repeat',
+            'conditions': 'go_to_repeat'
+        },
+        {
+            'trigger': 'rep',
+            'source': 'repeat',
+            'dest': 'repeat',
+            'conditions': 'always_true'
+        },
+        {
+            'trigger': 'random_gen',
+            'source': 'random',
+            'dest': 'min',
+            'conditions': 'go_to_min'
+        },
+	{
+            'trigger': 'random_gen',
+            'source': 'min',
+            'dest': 'max',
+            'conditions': 'go_to_max'
+        },
+	{
             'trigger': 'go_back',
             'source': [
-                'state1',
-                'state2'
+		'max',
+		'eat',
+		'drink',
+		'repeat'
             ],
-            'dest': 'user'
+            'dest': 'choose'
         }
     ],
-    initial='user',
+    initial='choose',
     auto_transitions=False,
     show_conditions=True,
 )
@@ -63,7 +102,12 @@ def webhook_handler():
 
     if body['object'] == "page":
         event = body['entry'][0]['messaging'][0]
-        machine.advance(event)
+        if machine.state == 'choose':
+                machine.init(event)
+        elif machine.state == 'random' or machine.state == 'min':
+                machine.random_gen(event)
+        elif machine.state == 'repeat':
+                machine.rep(event)
         return 'OK'
 
 
@@ -74,4 +118,5 @@ def show_fsm():
 
 
 if __name__ == "__main__":
+    global_var.initialize()
     run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
