@@ -66,6 +66,7 @@ class TocMachine(GraphMachine):
 
     def go_to_demo(self, event):
         if event.get("message") and event['message'].get("text"):
+            print("hello\n")
             text = event['message']['text']
             return text.lower() == 'demo'
         return False
@@ -89,9 +90,6 @@ class TocMachine(GraphMachine):
         responese = send_text_message(sender_id, eat[ran])
         self.go_back()
 
-    def on_exit_max(self):
-        print('go back to choose')
-
     def on_enter_drink(self, event):
         print("I'm entering drink")
 
@@ -114,9 +112,6 @@ class TocMachine(GraphMachine):
             sender_id = event['sender']['id']
             responese = send_text_message(sender_id, text)
 
-    def on_exit_max(self):
-        print('go back to choose')
-
     def on_enter_sticker(self, event):
         print("I'm entering sticker")
 
@@ -133,7 +128,7 @@ class TocMachine(GraphMachine):
         responese = send_text_message(sender_id, context)
         self.go_back()
 
-    def on_enter_movie(self, event):
+    def on_enter_demo(self, event):
         print("I'm entering demo")
 
         sender_id = event['sender']['id']
@@ -168,7 +163,4 @@ class TocMachine(GraphMachine):
         a=random.randint(global_var.minimum,global_var.maximum)
         responese = send_text_message(sender_id, a)
 #        self.go_back()
-
-    def on_exit_max(self):
-        print('go back to choose')
 
