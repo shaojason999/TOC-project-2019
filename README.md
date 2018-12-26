@@ -16,7 +16,7 @@
 5. [按讚]
 * 回答你: thanks for your like
 6. movie
-* 回答你最新電影名單 [ref](https://movies.yahoo.com.tw/)
+* 回答你最新電影名單: [ref](https://movies.yahoo.com.tw/)
 
 環境設定與介紹
 -------------------------------
