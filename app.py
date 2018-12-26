@@ -130,7 +130,7 @@ def webhook_handler():
         event = body['entry'][0]['messaging'][0]
         if machine.state == 'choose':
                 machine.init(event)
-        elif machine.state == 'random' or machine.state == 'min':
+        elif machine.state == 'random' or machine.state == 'min' or machine.state== 'max':
                 machine.random_gen(event)
         elif machine.state == 'repeat':
                 machine.rep(event)
