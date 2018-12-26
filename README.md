@@ -62,11 +62,13 @@ python3 app.py
 Local端執行教學(使用ngrook)
 -------------------------------
 ### 每次使用須執行:
-1. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
-2. $python3 app.py
-3. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
-4. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
-* 1.跟2.不能關
+1. $export PORT=5000
+2. $export ACCESS_TOKEN="你的粉專權杖"
+3. $./ngrook http 5000  (ngrook需去官網下載，放在同資料夾下)
+4. $python3 app.py
+5. 到FB developer的產品的webhook，選擇"page"的subscribe。webhook的網址從1.取得，token打123(app.py裡的設定)
+6. 開始用粉專傳訊息 (由管理員傳才會有回應)(權限問題)
+* 3.跟4.要開著，不能關掉
 
 PaaS使用教學(使用Heroku)
 -------------------------------
