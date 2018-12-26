@@ -4,7 +4,6 @@ from utils import send_text_message
 import random
 import global_var
 
-
 from bs4 import BeautifulSoup
 import requests
 
