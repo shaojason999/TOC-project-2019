@@ -1,4 +1,4 @@
 def initialize():
         global minimum,maximum
         minimum=0
-        maximum=200
+        maximum=100
