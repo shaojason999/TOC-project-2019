@@ -18,7 +18,8 @@ machine = TocMachine(
 	'eat',
 	'drink',
 	'repeat',
-	'sticker'
+	'sticker',
+	'movie'
     ],
     transitions=[
         {
@@ -52,6 +53,12 @@ machine = TocMachine(
             'conditions': 'go_to_sticker'
         },
         {
+            'trigger': 'init',
+            'source': 'choose',
+            'dest': 'movie',
+            'conditions': 'go_to_movie'
+        },
+        {
             'trigger': 'rep',
             'source': 'repeat',
             'dest': 'repeat',
@@ -76,7 +83,8 @@ machine = TocMachine(
 		'eat',
 		'drink',
 		'repeat',
-		'sticker'
+		'sticker',
+		'movie'
             ],
             'dest': 'choose'
         }
@@ -85,6 +93,7 @@ machine = TocMachine(
     auto_transitions=False,
     show_conditions=True,
 )
+
 
 
 @route("/webhook", method="GET")

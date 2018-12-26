@@ -4,6 +4,25 @@ from utils import send_text_message
 import random
 import global_var
 
+
+from bs4 import BeautifulSoup
+import requests
+
+def movie():
+	target_url='https://movies.yahoo.com.tw/'
+	rs=requests.session()
+	res=rs.get(target_url, verify=False)
+	res.enconding='utf-8'
+	soup=BeautifulSoup(res.text, 'html.parser')
+	context=""
+	for index, data in enumerate(soup.select('div.movielist_info h2 a')):
+		if index==10:
+			return context
+		title=data.text
+		link=data['href']
+		context+='{}\n{}\n'.format(title,link)
+	return context
+
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(
@@ -39,6 +58,12 @@ class TocMachine(GraphMachine):
         if event.get("message") and event['message'].get("sticker_id"):
             text = event['message']['sticker_id']
             return text == 369239263222822
+        return False
+
+    def go_to_movie(self, event):
+        if event.get("message") and event['message'].get("text"):
+            text = event['message']['text']
+            return text.lower() == 'movie'
         return False
 
     def always_true(self, event):
@@ -93,6 +118,14 @@ class TocMachine(GraphMachine):
 
         sender_id = event['sender']['id']
         responese = send_text_message(sender_id, "thanks for you like")
+        self.go_back()
+
+    def on_enter_movie(self, event):
+        print("I'm entering movie")
+
+        sender_id = event['sender']['id']
+        context=movie()
+        responese = send_text_message(sender_id, context)
         self.go_back()
 
     def go_to_min(self, event):
