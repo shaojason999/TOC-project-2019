@@ -64,6 +64,12 @@ class TocMachine(GraphMachine):
             return text.lower() == 'movie'
         return False
 
+    def go_to_demo(self, event):
+        if event.get("message") and event['message'].get("text"):
+            text = event['message']['text']
+            return text.lower() == 'demo'
+        return False
+
     def always_true(self, event):
         return True
 
@@ -118,12 +124,20 @@ class TocMachine(GraphMachine):
         responese = send_text_message(sender_id, "thanks for you like")
         self.go_back()
 
+
     def on_enter_movie(self, event):
         print("I'm entering movie")
 
         sender_id = event['sender']['id']
         context=movie()
         responese = send_text_message(sender_id, context)
+        self.go_back()
+
+    def on_enter_movie(self, event):
+        print("I'm entering demo")
+
+        sender_id = event['sender']['id']
+        responese = send_text_message(sender_id, "demo")
         self.go_back()
 
     def go_to_min(self, event):
@@ -153,7 +167,7 @@ class TocMachine(GraphMachine):
         sender_id = event['sender']['id']
         a=random.randint(global_var.minimum,global_var.maximum)
         responese = send_text_message(sender_id, a)
-        self.go_back()
+#        self.go_back()
 
     def on_exit_max(self):
         print('go back to choose')

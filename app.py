@@ -20,7 +20,8 @@ machine = TocMachine(
 	'drink',
 	'repeat',
 	'sticker',
-	'movie'
+	'movie',
+	'demo'
     ],
     transitions=[
         {
@@ -78,6 +79,12 @@ machine = TocMachine(
             'conditions': 'go_to_max'
         },
 	{
+            'trigger': 'random_gen',
+            'source': 'max',
+            'dest': 'demo',
+            'conditions': 'go_to_demo'
+        },
+	{
             'trigger': 'go_back',
             'source': [
 		'max',
@@ -85,7 +92,8 @@ machine = TocMachine(
 		'drink',
 		'repeat',
 		'sticker',
-		'movie'
+		'movie',
+		'demo'
             ],
             'dest': 'choose'
         }
